@@ -2,19 +2,15 @@ const express = require("express");
 const app = express();
 const PORT = 3000;
 
-// 템플릿 엔진 설정
 app.set("view engine", "pug");
 app.set("views", "./views");
 
-// public 폴더 정적 파일(css, 이미지 등) 사용
 app.use(express.static("public"));
 
-// 기본 라우트
 app.get("/", (req, res) => {
   res.render("index", { title: "1급비밀" });
 });
 
-// 포트 리스닝
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
@@ -41,7 +37,6 @@ app.get("/write", (req, res) => {
 });
 
 app.post("/write", (req, res) => {
-  // 나중에 DB 처리하면 여기에서 저장
   res.send("작성 완료 (임시)");
 });
 
@@ -57,7 +52,7 @@ app.get("/photo", (req, res) => {
 
 
 app.get("/photo/write", (req, res) => {
-  console.log("🔥 photo-write 진입"); // 추가
+  console.log("🔥 photo-write 진입");
   res.render("photo-write", { title: "사진 등록" });
 });
 
@@ -71,7 +66,6 @@ app.get("/photo/write", (req, res) => {
 });
 
 app.post("/photo/write", (req, res) => {
-  // 실제 업로드는 생략. 그냥 완료 처리
   res.send("사진 등록 완료!");
 });
 
@@ -97,6 +91,5 @@ app.get("/login", (req, res) => {
 });
 
 app.post("/login", (req, res) => {
-  // 실제 로그인 로직은 나중에 구현
   res.send("로그인 처리됨 (임시)");
 });
